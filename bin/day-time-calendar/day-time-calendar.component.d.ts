@@ -1,0 +1,43 @@
+import { ECalendarValue } from '../common/types/calendar-value-enum';
+import { SingleCalendarValue } from '../common/types/single-calendar-value';
+import { EventEmitter, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ControlValueAccessor, FormControl, ValidationErrors, Validator } from '@angular/forms';
+import { Moment } from 'jalali-moment';
+import { CalendarValue } from '../common/types/calendar-value';
+import { UtilsService } from '../common/services/utils/utils.service';
+import { IDate } from '../common/models/date.model';
+import { IDayTimeCalendarConfig } from './day-time-calendar-config.model';
+import { DayTimeCalendarService } from './day-time-calendar.service';
+export declare class DayTimeCalendarComponent implements OnInit, OnChanges, ControlValueAccessor, Validator {
+    dayTimeCalendarService: DayTimeCalendarService;
+    utilsService: UtilsService;
+    config: IDayTimeCalendarConfig;
+    displayDate: SingleCalendarValue;
+    minDate: Moment | string;
+    maxDate: Moment | string;
+    theme: string;
+    onChange: EventEmitter<IDate>;
+    isInited: boolean;
+    componentConfig: IDayTimeCalendarConfig;
+    _selected: Moment;
+    inputValue: CalendarValue;
+    inputValueType: ECalendarValue;
+    validateFn: (inputVal: CalendarValue) => {
+        [key: string]: any;
+    };
+    selected: Moment;
+    constructor(dayTimeCalendarService: DayTimeCalendarService, utilsService: UtilsService);
+    ngOnInit(): void;
+    init(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    writeValue(value: CalendarValue): void;
+    registerOnChange(fn: any): void;
+    onChangeCallback(_: any): void;
+    registerOnTouched(fn: any): void;
+    validate(formControl: FormControl): ValidationErrors | any;
+    processOnChangeCallback(value: Moment): CalendarValue;
+    initValidators(): void;
+    dateSelected(day: IDate): void;
+    timeChange(time: IDate): void;
+    emitChange(): void;
+}
