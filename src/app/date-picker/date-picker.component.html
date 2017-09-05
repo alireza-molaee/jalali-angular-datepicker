@@ -1,5 +1,6 @@
 <div>
   <div *ngIf="!componentConfig.hideInputContainer" class="dp-input-container">
+    <div class="input-group">
     <input type="text"
            class="dp-picker-input form-control"
            [placeholder]="placeholder"
@@ -8,6 +9,10 @@
            (focus)="inputFocused()"
            [readonly]="componentConfig.disableKeypress"
            [disabled]="disabled"/>
+      <span class="input-group-addon input-group-addon-primary">
+          <i class="ion-calendar"></i>
+      </span>          
+    </div>
 
     <button type="button"
             class="dp-current-location-btn"
