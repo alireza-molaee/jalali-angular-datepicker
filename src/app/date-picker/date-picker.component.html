@@ -1,7 +1,7 @@
 <div>
   <div *ngIf="!componentConfig.hideInputContainer" class="dp-input-container">
     <input type="text"
-           class="dp-picker-input"
+           class="dp-picker-input form-control"
            [placeholder]="placeholder"
            [ngModel]="inputElementValue"
            (ngModelChange)="onViewDateChange($event)"
